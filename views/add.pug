@@ -2,7 +2,7 @@ extend layout
 
 block content
   h1 Create New Chat rooms
-  form
+  form(method="post")
     fieldset.form-group
       input.form-control(name="name", type="text",placeholder="Enter a name")
       small.text-muted Give your chat room a meaningfull name for people to refer to it.
