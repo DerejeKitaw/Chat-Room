@@ -5,7 +5,9 @@ block content
   a.btn.btn-primary(href="/admin/rooms/add") Create a new chat room
   table.table.table-striped
     theadtr
+      th
       th name
+      th
       th id
     tbody
        each room in rooms
@@ -13,4 +15,6 @@ block content
           td(style="width: 50px;"): a(href="/admin/rooms/delete/"+room.id)
             span.glyphicon.glyphicon-remove
           td=room.name
+          td(style="width: 50px;"): a(href="/admin/rooms/edit/"+room.id)
+            span.glyphicon.glyphicon-pencil
           td=room.id
