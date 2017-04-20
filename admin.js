@@ -1,11 +1,12 @@
 var uuid = require("node-uuid");
 var _=require("lodash");
-
+var express = require("express");
 var rooms = require('./data/Rooms.json');
 
-module.exports=function(app){
+var router = express.Router();
+module.exports=router;
 
-app.get('/admin/rooms', function (req, res) {
+router.get('/admin/rooms', function (req, res) {
     res.render("rooms", {
         title: "Admin Rooms",
         rooms: rooms
@@ -13,12 +14,12 @@ app.get('/admin/rooms', function (req, res) {
 });
 
 //Creat chat room
-app.get('/admin/rooms/add', function (req, res) {
+router.get('/admin/rooms/add', function (req, res) {
     res.render("add");
 });
 
 //Creat chat room
-app.post('/admin/rooms/add', function (req, res) {
+router.post('/admin/rooms/add', function (req, res) {
     var room = {
         name: req.body.name,
         id:uuid.v4()
@@ -26,7 +27,7 @@ app.post('/admin/rooms/add', function (req, res) {
     rooms.push(room);
     res.redirect("/admin/rooms"); 
 });
-app.post('/admin/rooms/edit/:id', function (req, res) {
+router.post('/admin/rooms/edit/:id', function (req, res) {
     var roomId =req.params.id;
     var room =_.find(rooms, r => r.id === roomId);
     if(!room){
@@ -36,7 +37,7 @@ app.post('/admin/rooms/edit/:id', function (req, res) {
     room.name = req.body.name;
     res.redirect("/admin/rooms"); 
 });
-app.get('/admin/rooms/edit/:id', function (req, res) {
+router.get('/admin/rooms/edit/:id', function (req, res) {
     var roomId = req.params.id;
     var room = _.find(rooms, r => r.id === roomId);
     //Do not dender if room doesnt exist
@@ -47,10 +48,8 @@ app.get('/admin/rooms/edit/:id', function (req, res) {
     res.render("edit",{room}); 
 });
 
-app.get('/admin/rooms/delete/:id', function (req, res) {
+router.get('/admin/rooms/delete/:id', function (req, res) {
     var roomId = req.params.id;
     rooms = rooms.filter(r => r.id !== roomId);
     res.redirect("/admin/rooms"); 
 });
-    
-}
