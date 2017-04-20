@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var rooms = require('./data/Rooms.json');
 var bodyParser=require("body-parser");
+var uuid = require("node-uuid");
 
 app.set("views", "./views");
 app.set('view engine', 'pug');
@@ -30,7 +31,10 @@ app.get('/admin/rooms/add', function (req, res) {
 
 //Creat chat room
 app.post('/admin/rooms/add', function (req, res) {
-    res.send("nothing");
+    var room = {
+        name: requ.bodyParser.name,
+        id:uuid.v4()
+    };
 });
 app.listen(3000, function () {
     console.log('Chat app listening on port 3000!');
