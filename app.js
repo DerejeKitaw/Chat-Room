@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var rooms = require('./data/Rooms.json');
+
 var bodyParser=require("body-parser");
 
 app.set("views", "./views");

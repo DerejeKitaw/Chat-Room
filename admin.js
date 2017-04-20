@@ -1,6 +1,7 @@
 var uuid = require("node-uuid");
 var _=require("lodash");
 
+var rooms = require('./data/Rooms.json');
 
 
 app.get('/admin/rooms', function (req, res) {
