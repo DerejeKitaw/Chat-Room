@@ -2,8 +2,6 @@ var express = require("express");
 var app = express();
 var rooms = require('./data/Rooms.json');
 var bodyParser=require("body-parser");
-var uuid = require("node-uuid");
-var _=require("lodash");
 
 app.set("views", "./views");
 app.set('view engine', 'pug');

@@ -1,3 +1,8 @@
+var uuid = require("node-uuid");
+var _=require("lodash");
+
+
+
 app.get('/admin/rooms', function (req, res) {
     res.render("rooms", {
         title: "Admin Rooms",
