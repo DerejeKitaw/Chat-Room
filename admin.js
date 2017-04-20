@@ -13,31 +13,30 @@ router.get('/rooms', function (req, res) {
     });
 });
 
-//Creat chat room
-router.get('/rooms/add', function (req, res) {
-    res.render("add");
-});
-
-//Creat chat room
-router.post('/rooms/add', function (req, res) {
+router.route('/rooms/add')
+    .get(function (req, res) {
+        res.render("add");
+    })
+    .post( function (req, res) {
     var room = {
         name: req.body.name,
         id:uuid.v4()
     };
     rooms.push(room);
     res.redirect(req.baseUrl + "/rooms"); 
-});
-router.post('/rooms/edit/:id', function (req, res) {
-    var roomId =req.params.id;
-    var room =_.find(rooms, r => r.id === roomId);
-    if(!room){
-        res.sendStatus(404);
-        return;
-    }
-    room.name = req.body.name;
-    res.redirect(req.baseUrl + "/rooms"); 
-});
-router.get('/rooms/edit/:id', function (req, res) {
+    });
+router.route('/rooms/edit/:id')
+    .post(function (req, res) {
+        var roomId =req.params.id;
+        var room =_.find(rooms, r => r.id === roomId);
+        if(!room){
+            res.sendStatus(404);
+            return;
+        }
+        room.name = req.body.name;
+        res.redirect(req.baseUrl + "/rooms"); 
+        })
+    .get(function (req, res) {
     var roomId = req.params.id;
     var room = _.find(rooms, r => r.id === roomId);
     //Do not dender if room doesnt exist
@@ -46,7 +45,7 @@ router.get('/rooms/edit/:id', function (req, res) {
         return;
     }
     res.render("edit",{room}); 
-});
+    });
 
 router.get('/rooms/delete/:id', function (req, res) {
     var roomId = req.params.id;
