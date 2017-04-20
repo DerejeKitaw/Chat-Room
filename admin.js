@@ -14,6 +14,8 @@ router.get('/rooms', function (req, res) {
 });
 
 router.route('/rooms/add')
+// TODO: remove duplicated code in get and post method - use middleware
+
     .get(function (req, res) {
         res.render("add");
     })

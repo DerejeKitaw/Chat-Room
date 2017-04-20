@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(express.static('node_modules/bootstrap/dist'));
  
+//TODO: Create a middleware to log all incomming request
+
 app.get('/', function (req, res) {
     res.render("index.pug", { title: "Index" });
 });
