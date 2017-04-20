@@ -42,8 +42,11 @@ app.post('/admin/rooms/add', function (req, res) {
 app.post('/admin/rooms/edit/:id', function (req, res) {
     var roomId =req.params.id;
     var room =_.find(rooms, r => r.id === roomId);
+    if(!room){
+        res.sendStatus(404);
+        return;
+    }
     room.name = req.body.name;
-
     res.redirect("/admin/rooms"); 
 });
 app.get('/admin/rooms/edit/:id', function (req, res) {
