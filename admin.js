@@ -25,7 +25,7 @@ router.post('/rooms/add', function (req, res) {
         id:uuid.v4()
     };
     rooms.push(room);
-    res.redirect("/admin/rooms"); 
+    res.redirect(req.baseUrl + "/rooms"); 
 });
 router.post('/rooms/edit/:id', function (req, res) {
     var roomId =req.params.id;
@@ -35,7 +35,7 @@ router.post('/rooms/edit/:id', function (req, res) {
         return;
     }
     room.name = req.body.name;
-    res.redirect("/admin/rooms"); 
+    res.redirect(req.baseUrl + "/rooms"); 
 });
 router.get('/rooms/edit/:id', function (req, res) {
     var roomId = req.params.id;
@@ -51,5 +51,5 @@ router.get('/rooms/edit/:id', function (req, res) {
 router.get('/rooms/delete/:id', function (req, res) {
     var roomId = req.params.id;
     rooms = rooms.filter(r => r.id !== roomId);
-    res.redirect("/admin/rooms"); 
+    res.redirect(req.baseUrl + "/rooms"); 
 });
