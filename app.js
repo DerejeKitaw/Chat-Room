@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
     res.render("index.pug", { title: "Index" });
 });
  var adminRouter = require("./admin");
- app.use(adminRouter);
+ app.use("./admin",adminRouter);
 app.listen(3000, function () {
     console.log('Chat app listening on port 3000!');
 });
