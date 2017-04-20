@@ -2,4 +2,9 @@ extend layout
 
 block content
   h1 Chat rooms
-  = JSON.stringify(rooms)
+  table
+    tbody
+       each room in rooms
+        tr
+        td=room.name
+        td=room.id
