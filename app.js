@@ -32,9 +32,11 @@ app.get('/admin/rooms/add', function (req, res) {
 //Creat chat room
 app.post('/admin/rooms/add', function (req, res) {
     var room = {
-        name: requ.bodyParser.name,
+        name: req.body.name,
         id:uuid.v4()
     };
+    rooms.push(room);
+    res.json(room);
 });
 app.listen(3000, function () {
     console.log('Chat app listening on port 3000!');
