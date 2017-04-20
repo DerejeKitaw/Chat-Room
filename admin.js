@@ -3,6 +3,7 @@ var _=require("lodash");
 
 var rooms = require('./data/Rooms.json');
 
+module.exports=function(app){
 
 app.get('/admin/rooms', function (req, res) {
     res.render("rooms", {
@@ -51,3 +52,5 @@ app.get('/admin/rooms/delete/:id', function (req, res) {
     rooms = rooms.filter(r => r.id !== roomId);
     res.redirect("/admin/rooms"); 
 });
+    
+}
