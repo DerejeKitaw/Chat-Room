@@ -36,8 +36,13 @@ app.post('/admin/rooms/add', function (req, res) {
         id:uuid.v4()
     };
     rooms.push(room);
-    res.redirect("/admin/rooms");
+    res.redirect("/admin/rooms"); 
 });
+app.get('/admin/rooms/delete/:id', function (req, res) {
+    var roomId = req.param.id;
+    res.send(roomId);
+});
+
 app.listen(3000, function () {
     console.log('Chat app listening on port 3000!');
 });
