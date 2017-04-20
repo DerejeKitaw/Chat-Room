@@ -49,6 +49,11 @@ app.post('/admin/rooms/edit/:id', function (req, res) {
 app.get('/admin/rooms/edit/:id', function (req, res) {
     var roomId = req.params.id;
     var room = _.find(rooms, r => r.id === roomId);
+    //Do not dender if room doesnt exist
+    if(!room){
+        res.sendStatus(404);
+        return;
+    }
     res.render("edit",{room}); 
 });
 
