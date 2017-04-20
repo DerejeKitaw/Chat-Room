@@ -39,9 +39,16 @@ app.post('/admin/rooms/add', function (req, res) {
     rooms.push(room);
     res.redirect("/admin/rooms"); 
 });
+app.post('/admin/rooms/edit/:id', function (req, res) {
+    var roomId =req.params.id;
+    var room =_.find(rooms, r => r.id === roomId);
+    room.name = req.body.name;
+
+    res.redirect("/admin/rooms"); 
+});
 app.get('/admin/rooms/edit/:id', function (req, res) {
     var roomId = req.params.id;
-    var room = _.find(rooms, r => r.id !== roomId);
+    var room = _.find(rooms, r => r.id === roomId);
     res.render("edit",{room}); 
 });
 
