@@ -8,6 +8,7 @@ app.set('view engine', 'pug');
 
 app.use(express.static('public'));
 app.use(express.static('node_modules/bootstrap/dist'));
+app.use(express.static('node_modules/jquery/dist'));
 app.use(bodyParser.urlencoded({extended: true}));
  
 //TODO: Create a middleware to log all incomming request -- Done partialy
@@ -17,7 +18,7 @@ app.use(function(req,res,next){
 });
 
 app.get('/', function (req, res) {
-    res.render("index.pug", { title: "Index" });
+    res.render("home.pug", { title: "Home" });
 });
  var adminRouter = require("./admin");
  app.use("/admin",adminRouter);
