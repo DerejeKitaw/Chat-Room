@@ -35,9 +35,9 @@ router.route('/rooms/edit/:id')
         if (!room) {
             res.sendStatus(404);
             //In development mode you can use next with object
-            //next(new Error("OH no")); this will through trace of errors
+            //next(new Error("OH no")); //this will through trace of errors
             //or spit out custom message
-            //next ("Oh NO something went wrong"");
+            //next ("Oh NO something went wrong");
             //You you can also send error handling midle ware to the next
             return;
         }
