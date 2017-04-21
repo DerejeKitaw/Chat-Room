@@ -1,5 +1,5 @@
 var express =require("express");
-var rooms = require("./data/rooms/json");
+var rooms = require("./data/rooms.json");
 
 var router = express.Router();
 module.exports= router;
