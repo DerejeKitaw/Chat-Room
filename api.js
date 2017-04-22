@@ -11,7 +11,8 @@ router.get("/rooms",function(req,res){
 });
 
 //get messages of specific room
-router.get("/rooms/:roomId/messages", function (req, res){
+router.route("/rooms/:roomId/messages")
+    .get(function (req, res){
     var roomId = req.params.roomId;
     //filter messages with roomId
     var roomMessages = messages
@@ -26,4 +27,13 @@ router.get("/rooms/:roomId/messages", function (req, res){
         room: room,
         messages: roomMessages
     })
+})
+.post(function (req, res){
+    var roomId = req.params.roomId;
+
+
+})
+.delete(function(req,res){
+    var roomId = req.params.roomId;
+    
 });
