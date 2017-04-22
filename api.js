@@ -33,10 +33,10 @@ router.route("/rooms/:roomId/messages")
     var roomId = req.params.roomId;
 
     var message = {
+        id: uuid.v4(),
         roomId: roomId,
-        text:req.body.text,
         userId: "b3b12b8c-e0e6-47d8-89b2-4b60e12bba51",
-        id: uuid.v4()
+        text: req.body.text
     };
     messages.push(message);
     res.sendStatus(200);
