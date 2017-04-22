@@ -2,6 +2,7 @@ var express =require("express");
 var rooms = require("./data/rooms.json");
 var messages = require("./data/messages.json");
 var _=require("lodash");
+var uuid = require("node-uuid");
 
 var router = express.Router();
 module.exports= router;
@@ -31,9 +32,17 @@ router.route("/rooms/:roomId/messages")
 .post(function (req, res){
     var roomId = req.params.roomId;
 
+    var message = {
+        roomId: roomId,
+        text:req.body.text,
+        userId: "b3b12b8c-e0e6-47d8-89b2-4b60e12bba51",
+        id: uuid.v4()
+    };
+    messages.push(message);
+    res.sendStatus(200);
 
 })
 .delete(function(req,res){
     var roomId = req.params.roomId;
-    
+
 });
