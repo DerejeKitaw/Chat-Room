@@ -1,5 +1,5 @@
 $(function () {
-
+    //RoomId used to populate messages for each room
     var roomId;
 
     $.ajax({
@@ -7,7 +7,7 @@ $(function () {
         url: "/api/rooms",
         success: (function (rooms) {
             roomId = rooms[0].id;
-            getMessages();
+            getMessages(); //getting current room from global roomID for now
             $.each(rooms, function (key, room) {
                 var a = '<a href="#" data-room-id="' + room.id + '" class="room list-group-item">' + room.name + '</a>';
                 $("#rooms").append(a);
@@ -29,7 +29,7 @@ $(function () {
             })
         })
     }
-    $("#post").click(function () {
+$("#post").click(function () {
         var message = {text: $("#message").val()};
 
         $.ajax({
